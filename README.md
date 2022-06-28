@@ -7,7 +7,7 @@ BMSファイルのハッシュ値を求めると同時にその譜面の各IRペ
 * MD5系
 	* LR2IR
 * SHA256系
-	* mocha-IR
+	* Mocha-Repository
 	* MinIR
 	* Cinnamon
 
