@@ -1,6 +1,9 @@
 $File = $args[0]
+$Ext = [System.IO.Path]::GetExtension($File)
 
 #MD5
+#LR2IR非対応なので *.bmsonはスルー
+if($Ext -ne ".bmson"){
 $Stream = New-Object IO.StreamReader "$File"
 $Data = $Stream.BaseStream
 $Crypt = [System.Security.Cryptography.MD5]::create()
@@ -8,6 +11,7 @@ $Hash = $Crypt.ComputeHash($Data)
 $Result = [System.BitConverter]::ToString($Hash).ToLower().Replace("-", "")
 start "http://www.dream-pro.info/~lavalse/LR2IR/search.cgi?mode=ranking&bmsmd5=$Result"
 #start "http(s)://～～：将来的な追加のためのテンプレート。MD5ならこっち"
+}
 
 #SHA256
 $Stream = New-Object IO.StreamReader "$File"
